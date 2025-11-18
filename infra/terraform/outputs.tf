@@ -10,6 +10,6 @@ output "artifact_registry_repo" {
   value = google_artifact_registry_repository.docker_repo.repository_id
 }
 
-output "argocd_namespace" {
-  value = kubernetes_namespace.argocd.metadata[0].name
-}
+# output "argocd_namespace" {
+#   value = kubernetes_namespace.argocd.metadata[0].name
+# }
