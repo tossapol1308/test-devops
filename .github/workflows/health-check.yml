@@ -1,0 +1,22 @@
+name: Health Check
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check app health
+        run: |
+          URL="${{ secrets.HEALTHCHECK_URL }}"
+          echo "Checking $URL/health"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL/health")
+          if [ "$STATUS" -ne 200 ]; then
+            echo "Health check failed: $STATUS"
+            exit 1
+          fi
+          echo "Health check OK"

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: test-devops-app
+description: Helm chart for test-devops Node.js app
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

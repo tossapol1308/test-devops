@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-devops-app
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - STATSD_HOST=statsd
+      - STATSD_PORT=8125
+    depends_on:
+      - statsd
+    ports:
+      - "3000:3000"
+
+  statsd:
+    image: graphiteapp/graphite-statsd:latest
+    container_name: statsd
+    restart: always
+    ports:
+      - "80:80"        # Graphite Web UI
+      - "2003:2003"    # Carbon
+      - "8125:8125/udp"
+    environment:
+      - STATSD_INTERFACE=udp
