@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-devops-app
+  labels:
+    app: test-devops-app
+spec:
+  type: ClusterIP
+  selector:
+    app: test-devops-app
+  ports:
+    - name: http
+      port: 80
+      targetPort: {{ .Values.app.port }}
+      protocol: TCP

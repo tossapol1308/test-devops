@@ -1,0 +1,22 @@
+image:
+  repository: cross13008/test-devops
+  tag: "v2"
+  pullPolicy: IfNotPresent
+
+app:
+  replicaCount: 1
+  port: 3000
+  env:
+    NODE_ENV: "production"
+    STATSD_HOST: "graphite"
+    STATSD_PORT: "8125"
+
+graphite:
+  enabled: true
+  image: "graphiteapp/graphite-statsd"
+  tag: "latest"
+  webPort: 80
+  serviceType: NodePort
+  nodePort: 30080        # NodePort สำหรับ Web UI ที่ Docker Desktop
+
+resources: {}
