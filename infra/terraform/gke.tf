@@ -24,7 +24,7 @@ resource "google_container_node_pool" "primary_nodes" {
 
   node_config {
     machine_type = "e2-micro"   # Smallest available
-    disk_size_gb = 10           # Minimum disk size  
+    disk_size_gb = 20           # Increased from 10GB to 20GB (minimum 12GB required)
     disk_type    = "pd-standard" # Use standard disk instead of SSD
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",

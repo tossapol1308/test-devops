@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/<YOUR_GITHUB_ACCOUNT>/test-devops.git'
+    repoURL: 'https://github.com/tossapol1308/test-devops.git'
     targetRevision: main
     path: k8s/helm/app-chart
     helm:
